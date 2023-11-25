@@ -1,9 +1,9 @@
-import './App.css';
+import InputForm from './components/InputForm'
 
 function App() {
   return (
-    <div>    
-todo-app
+    <div style={{display: 'flex', justifyContent: 'center'}}>    
+<InputForm/>
     </div>
   );
 }
