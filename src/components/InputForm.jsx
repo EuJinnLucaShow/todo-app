@@ -10,9 +10,6 @@ const InputForm = () => {
         onChange={''}       
         required
       />
-
-
-
       <button type="submit">Add</button>
     </form>
   );
