@@ -1,22 +1,15 @@
 import React from 'react';
 
-const TodoItem = ({ todo, onDelete, onEdit }) => {
-  const { id, title, completed } = todo;
-
-  const handleDelete = () => {
-    onDelete(id);
-  };
-
-  const handleEdit = () => {
-    onEdit(id);
-  };
-
+const TodoItem = ({ task, toggleTaskStatus, deleteTask }) => {
   return (
-    <div className="todo-item">
-      <input type="checkbox" checked={completed} onChange={() => {}} />
-      <p className={completed ? 'completed' : ''}>{title}</p>
-      <button onClick={handleEdit}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
+    <div className="task">
+      <span
+        style={{ textDecoration: task.completed ? 'line-through' : 'none' }}
+        onClick={() => toggleTaskStatus(task.id)}
+      >
+        {task.title}
+      </span>
+      <button onClick={() => deleteTask(task.id)}>Delete</button>
     </div>
   );
 };

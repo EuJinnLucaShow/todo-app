@@ -1,17 +1,16 @@
+import React from 'react';
 
-const InputForm = () => {
-    
+const InputForm = ({ inputValue, setInputValue, addTask }) => {
   return (
-    <form  onSubmit={''}>
-      <h3 style={{ display: 'flex', justifyContent: 'center'}}>To-Do</h3>
+    <div className="add-task">
       <input
-        type="text"        
-        value={""}
-        onChange={''}       
-        required
+        type="text"
+        value={inputValue}
+        onChange={e => setInputValue(e.target.value)}
+        placeholder="Enter task..."
       />
-      <button type="submit">Add</button>
-    </form>
+      <button onClick={addTask}>Add Task</button>
+    </div>
   );
 };
 
