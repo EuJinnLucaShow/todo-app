@@ -3,7 +3,7 @@ import TodoItem from './TodoItem';
 
 const TodoList = ({ tasks, toggleTaskStatus, deleteTask }) => {
   return (
-    <div className="tasks">
+    <ul className="tasks">
       {tasks.map(task => (
         <TodoItem
           key={task.id}
@@ -12,7 +12,7 @@ const TodoList = ({ tasks, toggleTaskStatus, deleteTask }) => {
           deleteTask={deleteTask}
         />
       ))}
-    </div>
+    </ul>
   );
 };
 
