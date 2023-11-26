@@ -12,17 +12,14 @@ export const todoSlice = createSlice({
       state.todos.unshift(action.payload);
     },
     removeTodo: (state, action) => {
-      const updatedTodos = state.todos.filter(
-        item => item.id !== action.payload,
-      );
-      state.todos = updatedTodos;
+      const { payload: taskId } = action;
+      state.todos = state.todos.filter(todo => todo.id !== taskId);
     },
     toggleTodo: (state, action) => {
-     state.todos = state.todos.map(todo =>
-       todo.id === action.payload.id
-         ? { ...todo, completed: !todo.completed }
-         : todo,
-     );
+      const { payload: taskId } = action;
+      state.todos = state.todos.map(todo =>
+        todo.id === taskId ? { ...todo, completed: !todo.completed } : todo,
+      );
     },
   },
 });
