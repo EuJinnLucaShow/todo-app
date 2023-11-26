@@ -21,8 +21,12 @@ const TodoItem = ({ todo }) => {
   return (
     <li className="task">
       <span className={todo.completed ? 'checked' : 'none'}>{todo.title}</span>
-      <button onClick={() => toggleTaskStatus(todo.id)}>Done</button>
-      <button onClick={() => deleteTask(todo.id)}>Delete</button>
+      <button className="btn-done" onClick={() => toggleTaskStatus(todo.id)}>
+        Done
+      </button>
+      <button className="btn-delete" onClick={() => deleteTask(todo.id)}>
+        Delete
+      </button>
     </li>
   );
 };

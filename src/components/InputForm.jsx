@@ -26,12 +26,15 @@ const InputForm = () => {
   return (
     <div className="add-task">
       <input
+        className="input-task"
         type="text"
         value={inputValue}
         onChange={handleInputChange}
         placeholder="Enter task..."
       />
-      <button onClick={addTask}>Add Task</button>
+      <button className="btn-task" onClick={addTask}>
+        Add Task
+      </button>
     </div>
   );
 };
