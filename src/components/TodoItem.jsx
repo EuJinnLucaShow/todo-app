@@ -1,6 +1,22 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeTodo, toggleTodo } from 'redux/todoSlice';
 
-const TodoItem = ({ task, toggleTaskStatus, deleteTask }) => {
+const TodoItem = ({ task }) => {
+  const dispatch = useDispatch();
+
+  const deleteTask = taskId => {
+    dispatch(removeTodo(taskId));
+  };
+
+  const toggleTaskStatus = taskId => {
+    dispatch(toggleTodo(taskId));
+  };
+
+  if (!task) {
+    return null;
+  }
+
   return (
     <li className="task">
       <span
