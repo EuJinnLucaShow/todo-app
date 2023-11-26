@@ -6,7 +6,7 @@ import { fetchTodos } from 'redux/operations';
 
 const TodoList = () => {
   const todos = useSelector(selectTodo);
-
+  const reversedTodos = [...todos].reverse();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const TodoList = () => {
 
   return (
     <ul className="tasks">
-      {todos.map(todo => (
+      {reversedTodos.map(todo => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
     </ul>

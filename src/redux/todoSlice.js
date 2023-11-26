@@ -36,7 +36,7 @@ const todosSlice = createSlice({
       .addCase(addTodo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.todos.unshift(action.payload);
+        state.todos.push(action.payload);
       })
       .addCase(deleteTodo.pending, state => {
         state.isLoading = true;
