@@ -9,8 +9,7 @@
 
 ## Features
 
-- Fetches tasks from JSONPlaceholder API.
-- Implements pagination for task display.
+- Fetches tasks from MockAPI.
 - Allows CRUD operations for tasks.
 - Custom-designed UI for better user experience.
 - State management via Redux/Local Storage.
@@ -19,22 +18,13 @@
 
 - `src/`
   - `components/`: Contains React components.
-  - `redux/`: Redux-related files (if using Redux).
-  - `styles/`: CSS or styling-related files.
-  - `utils/`: Utility functions.
+  - `redux/`: Redux-related files (if using Redux).  
 
 ## How to Use
 
-- Add tasks using the 'Add' button.
-- Edit or delete tasks using respective controls.
-- Navigate between pages using pagination.
+- Add tasks using the 'Add Task' button.
+- Mark the task as completed or delete using the appropriate buttons.
 
 ## Repository Link
 
-Provide your Git repository link here.
-
-## Notes
-
-- Ensure proper commenting and code structuring.
-- For detailed information, refer to code comments and documentation within the
-  project.
+[Git repository link.](https://github.com/EuJinnLucaShow/todo-app)
