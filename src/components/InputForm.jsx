@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectTodo } from 'redux/selectors';
-import { addTodo } from 'redux/todoSlice';
+import { useDispatch } from 'react-redux';
+
+import { addTodo } from 'redux/operations';
 
 const InputForm = () => {
   const [inputValue, setInputValue] = useState('');
   const dispatch = useDispatch();
-  const todos = useSelector(selectTodo);
 
   const handleInputChange = e => {
-    setInputValue(e.target.value || ''); 
+    setInputValue(e.target.value || '');
   };
 
   const addTask = () => {
     if (inputValue.trim() !== '') {
       const newTask = {
-        id: todos.length + 1,
         title: inputValue,
         completed: false,
       };

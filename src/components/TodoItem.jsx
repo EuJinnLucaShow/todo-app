@@ -1,16 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeTodo, toggleTodo } from 'redux/todoSlice';
+import { deleteTodo, editTodo } from 'redux/operations';
 
 const TodoItem = ({ task }) => {
   const dispatch = useDispatch();
 
-  const deleteTask = taskId => {
-    dispatch(removeTodo(taskId));
+  const deleteTask = id => {
+    dispatch(deleteTodo(id));
   };
 
-  const toggleTaskStatus = taskId => {
-    dispatch(toggleTodo(taskId));
+  const toggleTaskStatus = id => {
+    const updatedTask = { id, completed: !task.completed };
+    dispatch(editTodo(updatedTask));
   };
 
   if (!task) {
@@ -19,12 +20,8 @@ const TodoItem = ({ task }) => {
 
   return (
     <li className="task">
-      <span
-        style={{ textDecoration: task.completed ? 'line-through' : 'none' }}
-        onClick={() => toggleTaskStatus(task.id)}
-      >
-        {task.title}
-      </span>
+      <span className={task.completed ? 'checked' : 'none'}>{task.title}</span>
+      <button onClick={() => toggleTaskStatus(task.id)}>Done</button>
       <button onClick={() => deleteTask(task.id)}>Delete</button>
     </li>
   );

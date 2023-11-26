@@ -24,3 +24,36 @@ code {
   align-items: flex-end;
   gap: 20px;
 }
+
+.task {
+  position: relative;
+  list-style-type: none;
+  font-size: 18px;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.task span {
+  padding-right: 50px;
+}
+
+.task .checked {
+  background-color: #f2f2f2;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.task .checked::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: -15px;
+  border-color: #65a2a3;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  height: 10px;
+  width: 5px;
+}
