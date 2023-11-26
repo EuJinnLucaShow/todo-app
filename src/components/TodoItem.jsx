@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, editTodo } from 'redux/operations';
 
-const TodoItem = ({ task }) => {
+const TodoItem = ({ todo }) => {
   const dispatch = useDispatch();
 
   const deleteTask = id => {
@@ -10,19 +10,19 @@ const TodoItem = ({ task }) => {
   };
 
   const toggleTaskStatus = id => {
-    const updatedTask = { id, completed: !task.completed };
+    const updatedTask = { id, completed: !todo.completed };
     dispatch(editTodo(updatedTask));
   };
 
-  if (!task) {
+  if (!todo) {
     return null;
   }
 
   return (
     <li className="task">
-      <span className={task.completed ? 'checked' : 'none'}>{task.title}</span>
-      <button onClick={() => toggleTaskStatus(task.id)}>Done</button>
-      <button onClick={() => deleteTask(task.id)}>Delete</button>
+      <span className={todo.completed ? 'checked' : 'none'}>{todo.title}</span>
+      <button onClick={() => toggleTaskStatus(todo.id)}>Done</button>
+      <button onClick={() => deleteTask(todo.id)}>Delete</button>
     </li>
   );
 };
