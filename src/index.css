@@ -109,3 +109,29 @@ code {
   cursor: pointer;
   white-space: nowrap;
 }
+
+/* CSS file or styles within your React component */
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}
+
+.pagination li.active {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+}
+
+.pagination li:hover {
+  background-color: #f0f0f0;
+}
