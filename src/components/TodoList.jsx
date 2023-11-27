@@ -9,6 +9,7 @@ const PAGE_SIZE = 5;
 
 const TodoList = () => {
   const todos = useSelector(selectTodo);
+  const reversedTodos = [...todos].reverse();
   const [currentPage, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
 
@@ -20,7 +21,7 @@ const TodoList = () => {
     setCurrentPage(selected);
   };
 
-  const paginatedTodos = todos.slice(
+  const paginatedTodos = reversedTodos.slice(
     currentPage * PAGE_SIZE,
     (currentPage + 1) * PAGE_SIZE,
   );
