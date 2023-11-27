@@ -10,6 +10,7 @@
 ## Features
 
 - Fetches tasks from MockAPI.
+- Implements pagination for task display.
 - Allows CRUD operations for tasks.
 - Custom-designed UI for better user experience.
 - State management via Redux/Local Storage.
@@ -18,12 +19,13 @@
 
 - `src/`
   - `components/`: Contains React components.
-  - `redux/`: Redux-related files (if using Redux).  
+  - `redux/`: Redux-related files (if using Redux).
 
 ## How to Use
 
 - Add tasks using the 'Add Task' button.
 - Mark the task as completed or delete using the appropriate buttons.
+- Navigate between pages using pagination.
 
 ## Repository Link
 
