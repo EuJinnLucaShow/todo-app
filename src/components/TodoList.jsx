@@ -34,8 +34,8 @@ const TodoList = () => {
         ))}
       </ul>
       <ReactPaginate
-        previousLabel={'Previous'}
-        nextLabel={'Next'}
+        previousLabel={'<'}
+        nextLabel={'>'}
         breakLabel={'...'}
         pageCount={Math.ceil(todos.length / PAGE_SIZE)}
         marginPagesDisplayed={2}

@@ -132,6 +132,11 @@ code {
   border: 1px solid #007bff;
 }
 
-.pagination li:not(.active):hover {
+.pagination li:not(.active):not(.disabled):hover {
   background-color: #f0f0f0;
+}
+
+.disabled {
+  background-color: #ccc;
+  color: #666;
 }
