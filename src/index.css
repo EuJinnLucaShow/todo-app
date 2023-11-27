@@ -49,6 +49,7 @@ code {
 .task {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   position: relative;
   list-style-type: none;
   width: 300px;
@@ -62,7 +63,7 @@ code {
 
 .task span {
   overflow-x: hidden;
-  padding-right: 150px;
+  overflow-y: auto;
 }
 
 .task .checked {
@@ -81,6 +82,10 @@ code {
   transform: rotate(45deg);
   height: 10px;
   width: 5px;
+}
+
+.btn-wrapper {
+  display: flex;
 }
 
 .btn-done {
