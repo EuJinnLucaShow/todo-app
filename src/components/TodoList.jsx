@@ -43,6 +43,7 @@ const TodoList = () => {
         onPageChange={handlePageChange}
         containerClassName={'pagination'}
         activeClassName={'active'}
+        renderOnZeroPageCount={null}
       />
     </div>
   );
