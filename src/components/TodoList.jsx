@@ -33,18 +33,20 @@ const TodoList = () => {
           <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
-      <ReactPaginate
-        previousLabel={'<'}
-        nextLabel={'>'}
-        breakLabel={'...'}
-        pageCount={Math.ceil(todos.length / PAGE_SIZE)}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageChange}
-        containerClassName={'pagination'}
-        activeClassName={'active'}
-        renderOnZeroPageCount={null}
-      />
+      {todos.length > PAGE_SIZE && (
+        <ReactPaginate
+          previousLabel={'<'}
+          nextLabel={'>'}
+          breakLabel={'...'}
+          pageCount={Math.ceil(todos.length / PAGE_SIZE)}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageChange}
+          containerClassName={'pagination'}
+          activeClassName={'active'}
+          renderOnZeroPageCount={null}
+        />
+      )}
     </div>
   );
 };
