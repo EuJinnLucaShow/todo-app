@@ -23,7 +23,7 @@
 
 ## How to Use
 
-- Add tasks using the 'Add Task' button.
+- Add tasks using the 'Add' button.
 - Mark the task as completed or delete using the appropriate buttons.
 - Navigate between pages using pagination.
 

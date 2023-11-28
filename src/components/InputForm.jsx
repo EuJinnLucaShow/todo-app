@@ -33,7 +33,7 @@ const InputForm = () => {
         placeholder="Enter task..."
       />
       <button className="btn-task" onClick={addTask}>
-        Add Task
+        Add
       </button>
     </div>
   );

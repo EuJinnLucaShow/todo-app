@@ -18,17 +18,24 @@ code {
   align-items: center;
 }
 
+.add-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+}
+
 .input-task {
   height: 40px;
-  width: 200px;
+  width: 210px;
   border-radius: 10px;
   padding-left: 10px;
   border: 2px solid #cccccc;
-  margin-right: 10px;
 }
 
 .btn-task {
   height: 40px;
+  padding: 10px 18px;
   border-radius: 10px;
   color: #ffffff;
   background-color: #4c91af;
