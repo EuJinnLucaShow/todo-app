@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, editTodo } from 'redux/operations';
+import { toast } from 'react-toastify';
 
 const TodoItem = ({ todo }) => {
   const dispatch = useDispatch();
@@ -9,11 +10,13 @@ const TodoItem = ({ todo }) => {
 
   const deleteTask = id => {
     dispatch(deleteTodo(id));
+    toast.info('The task was deleted.');
   };
 
   const toggleTaskStatus = id => {
     const updatedTask = { id, completed: !todo.completed };
     dispatch(editTodo(updatedTask));
+    toast('Task status changed.');
   };
 
   const handleEdit = () => {
@@ -21,11 +24,14 @@ const TodoItem = ({ todo }) => {
   };
 
   const handleSave = () => {
-    if (editedTitle.trim() !== '') {
-      const updatedTask = { ...todo, title: editedTitle };
-      dispatch(editTodo(updatedTask));
-      setEditable(false);
+    if (editedTitle.trim() === '') {
+      return toast.error('The field cannot be empty.');
     }
+
+    const updatedTask = { ...todo, title: editedTitle };
+    dispatch(editTodo(updatedTask));
+    setEditable(false);
+    toast.info('Task name has been changed.');
   };
 
   const handleCancel = () => {

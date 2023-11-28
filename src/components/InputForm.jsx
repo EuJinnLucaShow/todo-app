@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { addTodo } from 'redux/operations';
 
@@ -19,6 +20,7 @@ const InputForm = () => {
       };
 
       dispatch(addTodo(newTask));
+      toast.success('New task added.');
       setInputValue('');
     }
   };
