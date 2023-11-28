@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.todo-title {
+  padding-right: 75px;
+}
+
 .todo-app {
   display: flex;
   flex-direction: column;
