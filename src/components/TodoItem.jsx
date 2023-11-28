@@ -21,9 +21,11 @@ const TodoItem = ({ todo }) => {
   };
 
   const handleSave = () => {
-    const updatedTask = { ...todo, title: editedTitle };
-    dispatch(editTodo(updatedTask));
-    setEditable(false);
+    if (editedTitle.trim() !== '') {
+      const updatedTask = { ...todo, title: editedTitle };
+      dispatch(editTodo(updatedTask));
+      setEditable(false);
+    }
   };
 
   const handleCancel = () => {
