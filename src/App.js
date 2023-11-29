@@ -1,6 +1,6 @@
 import InputForm from 'components/InputForm';
-import Notifications from 'components/Notifications';
 import TodoList from 'components/TodoList';
+import Notifications from 'utils/Notifications';
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
       <h1 className="todo-title">TODO List</h1>
       <InputForm />
       <TodoList />
-      <Notifications/>
+      <Notifications />
     </div>
   );
 };
