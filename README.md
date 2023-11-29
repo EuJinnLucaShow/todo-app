@@ -20,6 +20,7 @@
 - `src/`
   - `components/`: Contains React components.
   - `redux/`: Redux-related files (if using Redux).
+  - `utils/`: Utility functions.
 
 ## How to Use
 
