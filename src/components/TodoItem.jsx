@@ -28,6 +28,10 @@ const TodoItem = ({ todo }) => {
       return toast.error('The field cannot be empty.');
     }
 
+    if (editedTitle.trim() === editedTitle) {
+      return toast.error('The task name is not changed.');
+    }
+
     const updatedTask = { ...todo, title: editedTitle };
     dispatch(editTodo(updatedTask));
     setEditable(false);
