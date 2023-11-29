@@ -13,16 +13,18 @@ const InputForm = () => {
   };
 
   const addTask = () => {
-    if (inputValue.trim() !== '') {
-      const newTask = {
-        title: inputValue,
-        completed: false,
-      };
-
-      dispatch(addTodo(newTask));
-      toast.success('New task added.');
-      setInputValue('');
+    if (inputValue.trim() === '') {
+      return toast.error('The field cannot be empty.');
     }
+
+    const newTask = {
+      title: inputValue,
+      completed: false,
+    };
+
+    dispatch(addTodo(newTask));
+    toast.success('New task added.');
+    setInputValue('');
   };
 
   return (
