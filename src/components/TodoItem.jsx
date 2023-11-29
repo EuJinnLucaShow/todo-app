@@ -28,7 +28,7 @@ const TodoItem = ({ todo }) => {
       return toast.error('The field cannot be empty.');
     }
 
-    if (editedTitle.trim() === editedTitle) {
+    if (editedTitle.trim() === todo.title) {
       return toast.error('The task name is not changed.');
     }
 

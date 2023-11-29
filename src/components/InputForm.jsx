@@ -18,7 +18,7 @@ const InputForm = () => {
     }
 
     const newTask = {
-      title: inputValue,
+      title: inputValue.trim(),
       completed: false,
     };
 
