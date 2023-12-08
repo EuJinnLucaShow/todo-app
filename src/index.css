@@ -1,19 +1,29 @@
+@font-face {
+  font-family: 'Diediedie';
+  src: url('./fonts/Diediedie.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: url('./fonts/poppins/Poppins-Regular.ttf') format('truetype');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, 'Diediedie', 'Poppins-Regular',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.wrapperTitle {
+  display: flex;
+  gap: 15px;
 }
 
 .todo-title {
-  padding-right: 75px;
+  font-family: 'Poppins-Regular';
+  padding-right: 78px;
 }
 
 .todo-app {
@@ -73,6 +83,7 @@ code {
 }
 
 .task span {
+  font-family: 'Poppins-Regular';
   overflow-x: hidden;
   overflow-y: auto;
 }

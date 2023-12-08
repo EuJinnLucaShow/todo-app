@@ -1,11 +1,12 @@
 import InputForm from 'components/InputForm';
+import Title from 'components/Title';
 import TodoList from 'components/TodoList';
 import Notifications from 'utils/Notifications';
 
 const App = () => {
   return (
     <div className="todo-app">
-      <h1 className="todo-title">TODO List</h1>
+      <Title />
       <InputForm />
       <TodoList />
       <Notifications />
