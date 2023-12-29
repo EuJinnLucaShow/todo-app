@@ -6,6 +6,7 @@ import todoReducer from './todoSlice';
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['todos'],
 };
 
 const persistedReducer = persistReducer(

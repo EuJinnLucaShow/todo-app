@@ -10,26 +10,23 @@ import Pagination from '../utils/Pagination';
 const PAGE_SIZE = 5;
 
 const TodoList = () => {
-  const todos = useSelector(selectTodo);
-  const reversedTodos = [...todos].reverse();
-  const [currentPage, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
-
-  const paginatedTodos = reversedTodos.slice(
-    currentPage * PAGE_SIZE,
-    (currentPage + 1) * PAGE_SIZE,
-  );
-
+  const todos = useSelector(selectTodo);
+  const [currentPage, setCurrentPage] = useState(0);
   const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    setItems(paginatedTodos);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage, todos]);
 
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
+
+  useEffect(() => {
+    const reversed = [...todos].reverse();
+    const paginatedTodos = reversed.slice(
+      currentPage * PAGE_SIZE,
+      (currentPage + 1) * PAGE_SIZE,
+    );
+    setItems(paginatedTodos);
+  }, [currentPage, todos]);
 
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
