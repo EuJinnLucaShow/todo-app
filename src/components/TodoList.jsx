@@ -24,6 +24,7 @@ const TodoList = () => {
 
   useEffect(() => {
     setItems(paginatedTodos);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, todos]);
 
   useEffect(() => {
