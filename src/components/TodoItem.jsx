@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTodo, editTodo } from 'redux/operations';
 import { toast } from 'react-toastify';
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, provided, snapshot }) => {
   const dispatch = useDispatch();
   const [editable, setEditable] = useState(false);
   const [editedTitle, setEditedTitle] = useState(todo.title);
@@ -52,48 +52,58 @@ const TodoItem = ({ todo }) => {
   }
 
   return (
-    <li className="task">
-      {editable ? (
-        <input
-          className="input-edit"
-          type="text"
-          value={editedTitle}
-          onChange={handleInputChange}
-          autoFocus
-        />
-      ) : (
-        <span className={todo.completed ? 'checked' : 'none'}>
-          {todo.title}
-        </span>
-      )}
-      <div className="btn-wrapper">
+    <div
+      ref={provided.innerRef}
+      snapshot={snapshot}
+      {...provided.draggableProps}
+      {...provided.dragHandleProps}
+    >
+      <li className="task">
         {editable ? (
-          <>
-            <button className="btn-save" onClick={handleSave}>
-              Save
-            </button>
-            <button className="btn-cancel" onClick={handleCancel}>
-              Cancel
-            </button>
-          </>
+          <input
+            className="input-edit"
+            type="text"
+            value={editedTitle}
+            onChange={handleInputChange}
+            autoFocus
+          />
         ) : (
-          <>
-            <button className="btn-edit" onClick={handleEdit}>
-              Edit
-            </button>
-            <button
-              className="btn-done"
-              onClick={() => toggleTaskStatus(todo.id)}
-            >
-              Done
-            </button>
-            <button className="btn-delete" onClick={() => deleteTask(todo.id)}>
-              Delete
-            </button>
-          </>
+          <span className={todo.completed ? 'checked' : 'none'}>
+            {todo.title}
+          </span>
         )}
-      </div>
-    </li>
+        <div className="btn-wrapper">
+          {editable ? (
+            <>
+              <button className="btn-save" onClick={handleSave}>
+                Save
+              </button>
+              <button className="btn-cancel" onClick={handleCancel}>
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="btn-edit" onClick={handleEdit}>
+                Edit
+              </button>
+              <button
+                className="btn-done"
+                onClick={() => toggleTaskStatus(todo.id)}
+              >
+                Done
+              </button>
+              <button
+                className="btn-delete"
+                onClick={() => deleteTask(todo.id)}
+              >
+                Delete
+              </button>
+            </>
+          )}
+        </div>
+      </li>
+    </div>
   );
 };
 
