@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import TodoItem from './TodoItem';
 import { selectTodo } from 'redux/selectors';
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchTodos } from 'redux/operations';
-import ReactPaginate from 'react-paginate';
+import Pagination from '../utils/Pagination';
 
 const PAGE_SIZE = 5;
 
@@ -27,27 +28,22 @@ const TodoList = () => {
   );
 
   return (
-    <div>
+    <>
       <ul className="tasks">
         {paginatedTodos.map(todo => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
       {todos.length > PAGE_SIZE && (
-        <ReactPaginate
-          previousLabel={'<'}
-          nextLabel={'>'}
-          breakLabel={'...'}
+        <Pagination
           pageCount={Math.ceil(todos.length / PAGE_SIZE)}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
           onPageChange={handlePageChange}
-          containerClassName={'pagination'}
-          activeClassName={'active'}
-          renderOnZeroPageCount={null}
+          currentPage={currentPage}
+          todosLength={todos.length}
+          PAGE_SIZE={PAGE_SIZE}
         />
       )}
-    </div>
+    </>
   );
 };
 
