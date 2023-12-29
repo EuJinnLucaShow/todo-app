@@ -16,10 +16,6 @@ const TodoList = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchTodos());
-  }, [dispatch]);
-
-  useEffect(() => {
     const reversed = [...todos].reverse();
     const paginatedTodos = reversed.slice(
       currentPage * PAGE_SIZE,
@@ -27,6 +23,10 @@ const TodoList = () => {
     );
     setItems(paginatedTodos);
   }, [currentPage, todos]);
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
 
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
@@ -42,10 +42,9 @@ const TodoList = () => {
       return;
     }
 
-    const newItems = Array.from(items);
-    const [removed] = newItems.splice(result.source.index, 1);
-    newItems.splice(result.destination.index, 0, removed);
-    setItems(newItems);
+    const [removed] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, removed);
+    setItems(items);
   };
 
   return (
