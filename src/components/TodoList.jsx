@@ -52,8 +52,8 @@ const TodoList = () => {
     setItems(items);
     console.log(items);
     console.log(todos);
-    // const reversed = [...items].reverse();
-    // dispatch(sendTodos(reversed));
+    const reversed = [...items].reverse();
+    dispatch(sendTodos(reversed));
   };
 
   return (
