@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { fetchTodos, addTodo, deleteTodo, editTodo } from './operations';
+import {
+  fetchTodos,
+  addTodo,
+  deleteTodo,
+  editTodo,
+  sendTodos,
+} from './operations';
 
 const initialState = {
   todos: [],
@@ -48,7 +54,9 @@ const todosSlice = createSlice({
       .addCase(deleteTodo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.todos = state.todos.filter(todo => todo.id !== action.payload.id);
+        state.todos = state.todos.filter(
+          todo => todo._id !== action.payload._id,
+        );
       })
       .addCase(editTodo.pending, state => {
         state.isLoading = true;
@@ -62,8 +70,21 @@ const todosSlice = createSlice({
         state.error = null;
         const updatedTodo = action.payload;
         state.todos = state.todos.map(todo =>
-          todo.id === updatedTodo.id ? updatedTodo : todo,
+          todo._id === updatedTodo._id ? updatedTodo : todo,
         );
+      })
+      .addCase(sendTodos.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(sendTodos.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload || 'Failed to send todos';
+      })
+      .addCase(sendTodos.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.todos = action.payload;
+        state.error = null;
       });
   },
 });

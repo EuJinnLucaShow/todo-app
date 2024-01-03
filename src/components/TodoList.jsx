@@ -4,7 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import TodoItem from './TodoItem';
 import { selectTodo } from 'redux/selectors';
-import { fetchTodos } from 'redux/operations';
+import { fetchTodos, sendTodos } from 'redux/operations';
 import Pagination from '../utils/Pagination';
 
 const PAGE_SIZE = 5;
@@ -45,6 +45,8 @@ const TodoList = () => {
     const [removed] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, removed);
     setItems(items);
+    const reversed = [...items].reverse();
+    dispatch(sendTodos(reversed));
   };
 
   return (
@@ -59,10 +61,14 @@ const TodoList = () => {
                 ref={provided.innerRef}
               >
                 {items.map((todo, index) => (
-                  <Draggable key={todo.id} draggableId={todo.id} index={index}>
+                  <Draggable
+                    key={todo._id}
+                    draggableId={todo._id}
+                    index={index}
+                  >
                     {(provided, snapshot) => (
                       <TodoItem
-                        key={todo.id}
+                        key={todo._id}
                         todo={todo}
                         provided={provided}
                         snapshot={snapshot}

@@ -8,13 +8,13 @@ const TodoItem = ({ todo, provided, snapshot }) => {
   const [editable, setEditable] = useState(false);
   const [editedTitle, setEditedTitle] = useState(todo.title);
 
-  const deleteTask = id => {
-    dispatch(deleteTodo(id));
+  const deleteTask = _id => {
+    dispatch(deleteTodo(_id));
     toast.info('The task was deleted.');
   };
 
-  const toggleTaskStatus = id => {
-    const updatedTask = { id, completed: !todo.completed };
+  const toggleTaskStatus = _id => {
+    const updatedTask = { _id, completed: !todo.completed };
     dispatch(editTodo(updatedTask));
     toast('Task status changed.');
   };
@@ -89,13 +89,13 @@ const TodoItem = ({ todo, provided, snapshot }) => {
               </button>
               <button
                 className="btn-done"
-                onClick={() => toggleTaskStatus(todo.id)}
+                onClick={() => toggleTaskStatus(todo._id)}
               >
                 Done
               </button>
               <button
                 className="btn-delete"
-                onClick={() => deleteTask(todo.id)}
+                onClick={() => deleteTask(todo._id)}
               >
                 Delete
               </button>
