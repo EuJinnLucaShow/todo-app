@@ -50,8 +50,7 @@ const TodoList = () => {
     const [removed] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, removed);
     setItems(items);
-    console.log(items);
-    console.log(todos);
+
     const reversed = [...items].reverse();
     dispatch(sendTodos(reversed));
   };
