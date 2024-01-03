@@ -57,7 +57,6 @@ export const editTodo = createAsyncThunk(
 export const sendTodos = createAsyncThunk(
   'todos/sendTodos',
   async (todosArray, thunkAPI) => {
-    console.log(todosArray);
     try {
       const response = await axios.post('/save-todos', todosArray);
       return response.data;

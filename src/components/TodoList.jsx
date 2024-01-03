@@ -6,6 +6,7 @@ import TodoItem from './TodoItem';
 import { selectTodo } from 'redux/selectors';
 import { fetchTodos, sendTodos } from 'redux/operations';
 import Pagination from '../utils/Pagination';
+import { toast } from 'react-toastify';
 
 const PAGE_SIZE = 5;
 
@@ -25,7 +26,11 @@ const TodoList = () => {
   }, [currentPage, todos]);
 
   useEffect(() => {
-    dispatch(fetchTodos());
+    toast.promise(dispatch(fetchTodos()), {
+      pending: 'TODO List is pending',
+      success: 'TODO List resolved 👌',
+      error: 'TODO List rejected 🤯',
+    });
   }, [dispatch]);
 
   const handlePageChange = ({ selected }) => {
@@ -45,8 +50,10 @@ const TodoList = () => {
     const [removed] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, removed);
     setItems(items);
-    const reversed = [...items].reverse();
-    dispatch(sendTodos(reversed));
+    console.log(items);
+    console.log(todos);
+    // const reversed = [...items].reverse();
+    // dispatch(sendTodos(reversed));
   };
 
   return (
