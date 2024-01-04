@@ -49,9 +49,16 @@ const TodoList = () => {
 
     const [removed] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, removed);
+
     setItems(items);
 
-    const reversed = [...items].reverse();
+    const updatedTodoIds = items.map(item => item._id);
+
+    const updatedTodos = [...todos].sort(
+      (a, b) => updatedTodoIds.indexOf(a._id) - updatedTodoIds.indexOf(b._id),
+    );
+
+    const reversed = [...updatedTodos].reverse();
     dispatch(sendTodos(reversed));
   };
 
