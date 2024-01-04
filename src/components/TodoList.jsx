@@ -4,7 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import TodoItem from './TodoItem';
 import { selectTodo } from 'redux/selectors';
-import { fetchTodos, sendTodos } from 'redux/operations';
+import { fetchTodos } from 'redux/operations';
 import Pagination from '../utils/Pagination';
 import { toast } from 'react-toastify';
 
@@ -52,14 +52,14 @@ const TodoList = () => {
 
     setItems(items);
 
-    const updatedTodoIds = items.map(item => item._id);
+    // const updatedTodoIds = items.map(item => item._id);
 
-    const updatedTodos = [...todos].sort(
-      (a, b) => updatedTodoIds.indexOf(a._id) - updatedTodoIds.indexOf(b._id),
-    );
+    // const updatedTodos = [...todos].sort(
+    //   (a, b) => updatedTodoIds.indexOf(a._id) - updatedTodoIds.indexOf(b._id),
+    // );
 
-    const reversed = [...updatedTodos].reverse();
-    dispatch(sendTodos(reversed));
+    // const reversed = [...updatedTodos].reverse();
+    // dispatch(sendTodos(reversed));
   };
 
   return (

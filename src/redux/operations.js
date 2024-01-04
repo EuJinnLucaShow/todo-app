@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://todo-nbbt.onrender.com/';
+axios.defaults.baseURL = 'https://todo-backend-vercel-woad.vercel.app/';
 
 export const fetchTodos = createAsyncThunk(
   'todos/fetchAll',
