@@ -65,3 +65,18 @@ export const sendTodos = createAsyncThunk(
     }
   },
 );
+
+export const updateTodoOrder = createAsyncThunk(
+  'todos/updateOrder',
+  async ({ sourceIndex, destinationIndex, taskId }, thunkAPI) => {
+    try {
+      await axios.patch(`/todos/${taskId}/order`, {
+        destinationIndex,
+      });
+
+      return { sourceIndex, destinationIndex, taskId };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);

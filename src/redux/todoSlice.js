@@ -6,6 +6,7 @@ import {
   deleteTodo,
   editTodo,
   sendTodos,
+  updateTodoOrder,
 } from './operations';
 
 const initialState = {
@@ -17,7 +18,13 @@ const initialState = {
 const todosSlice = createSlice({
   name: 'todo',
   initialState,
-  reducers: {},
+  reducers: {
+    reorderTodosLocal: (state, action) => {
+      const { sourceIndex, destinationIndex } = action.payload;
+      const [removed] = state.todos.splice(sourceIndex, 1);
+      state.todos.splice(destinationIndex, 0, removed);
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchTodos.pending, state => {
@@ -85,9 +92,19 @@ const todosSlice = createSlice({
         state.isLoading = false;
         state.todos = action.payload;
         state.error = null;
+      })
+      .addCase(updateTodoOrder.pending, (state, action) => {
+        const { sourceIndex, destinationIndex } = action.meta.arg;
+        const [removed] = state.todos.splice(sourceIndex, 1);
+        state.todos.splice(destinationIndex, 0, removed);
+      })
+      .addCase(updateTodoOrder.rejected, (state, action) => {
+        state.error = action.payload || 'Failed to update order';
       });
   },
 });
+
+export const { reorderTodosLocal } = todosSlice.actions;
 
 const { reducer: todosReducer } = todosSlice;
 export default todosReducer;
