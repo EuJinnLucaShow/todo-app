@@ -77,13 +77,7 @@ const TodoList = () => {
                     draggableId={todo._id}
                     index={index}
                   >
-                    {(provided, snapshot) => (
-                      <TodoItem
-                        todo={todo}
-                        provided={provided}
-                        snapshot={snapshot}
-                      />
-                    )}
+                    {provided => <TodoItem todo={todo} provided={provided} />}
                   </Draggable>
                 ))}
                 {provided.placeholder}

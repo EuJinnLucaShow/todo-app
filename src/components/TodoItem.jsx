@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, editTodo } from 'redux/operations';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
-const TodoItem = ({ todo, provided, snapshot }) => {
+const TodoItem = ({ todo, provided }) => {
   const dispatch = useDispatch();
   const [editable, setEditable] = useState(false);
   const [editedTitle, setEditedTitle] = useState(todo.title);
@@ -54,7 +55,6 @@ const TodoItem = ({ todo, provided, snapshot }) => {
   return (
     <div
       ref={provided.innerRef}
-      snapshot={snapshot}
       {...provided.draggableProps}
       {...provided.dragHandleProps}
     >
@@ -105,6 +105,16 @@ const TodoItem = ({ todo, provided, snapshot }) => {
       </li>
     </div>
   );
+};
+
+TodoItem.propTypes = {
+  todo: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+    order: PropTypes.number,
+  }).isRequired,
+  provided: PropTypes.object.isRequired,
 };
 
 export default TodoItem;
