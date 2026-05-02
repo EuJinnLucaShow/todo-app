@@ -4,8 +4,8 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { toast } from 'react-toastify';
 
 import TodoItem from './TodoItem';
-import { selectTodo } from 'redux/selectors';
-import { fetchTodos, updateTodoOrder } from 'redux/operations';
+import { selectTodo } from '../redux/selectors';
+import { fetchTodos, updateTodoOrder } from '../redux/operations';
 
 const PAGE_SIZE = 5;
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteTodo, editTodo } from 'redux/operations';
+import { deleteTodo, editTodo } from '../redux/operations';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
