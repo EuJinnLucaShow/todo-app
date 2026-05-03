@@ -5,7 +5,7 @@ const Title = () => {
   return (
     <div className="wrapperTitle">
       <img src={logo} alt="todo-list images" width="30px" />
-      <h1 className="todo-title">TODO List</h1>
+      <h1 className="todo-title">TO-DO List</h1>
     </div>
   );
 };

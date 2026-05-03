@@ -7,7 +7,7 @@ import TodoItem from './TodoItem';
 import { selectTodo } from '../redux/selectors';
 import { fetchTodos, updateTodoOrder } from '../redux/operations';
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -20,22 +20,25 @@ const TodoList = () => {
     node => {
       if (observerRef.current) observerRef.current.disconnect();
 
+      if (!node) return;
+
       observerRef.current = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting && visibleCount < todos.length) {
-          setVisibleCount(prev => prev + PAGE_SIZE);
+        if (entries[0].isIntersecting) {
+          setVisibleCount(prev =>
+            prev < todos.length ? prev + PAGE_SIZE : prev,
+          );
         }
       });
 
-      if (node) observerRef.current.observe(node);
+      observerRef.current.observe(node);
     },
-    [visibleCount, todos.length],
+    [todos.length],
   );
 
   useEffect(() => {
     toast.promise(dispatch(fetchTodos()), {
       pending: 'TODO List is pending',
-      success: 'TODO List resolved 👌',
-      error: 'TODO List rejected 🤯',
+      error: 'TODO List rejected',
     });
   }, [dispatch]);
 
@@ -61,36 +64,37 @@ const TodoList = () => {
   const visibleTodos = todos.slice(0, visibleCount);
 
   return (
-    <>
-      <ul className="tasks">
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="droppable">
-            {provided => (
-              <div
-                className="tasks-div"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {visibleTodos.map((todo, index) => (
-                  <Draggable
-                    key={todo._id}
-                    draggableId={todo._id}
-                    index={index}
-                  >
-                    {provided => <TodoItem todo={todo} provided={provided} />}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </ul>
+    <ul className="tasks">
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="droppable">
+          {provided => (
+            <div
+              className="tasks-div"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {visibleTodos.map((todo, index) => (
+                <Draggable key={todo._id} draggableId={todo._id} index={index}>
+                  {provided => <TodoItem todo={todo} provided={provided} />}
+                </Draggable>
+              ))}
+              {provided.placeholder}
 
-      {visibleCount < todos.length && (
-        <div ref={loadingTriggerRef} style={{ height: '20px' }} />
-      )}
-    </>
+              {visibleCount < todos.length && (
+                <div
+                  ref={loadingTriggerRef}
+                  style={{
+                    height: '20px',
+                    width: '100%',
+                    pointerEvents: 'none',
+                  }}
+                />
+              )}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </ul>
   );
 };
 
