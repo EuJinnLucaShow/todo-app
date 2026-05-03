@@ -8,8 +8,10 @@ import Notifications from './utils/Notifications';
 const App = () => {
   return (
     <div className="todo-app">
-      <Title />
-      <InputForm />
+      <div className="header">
+        <Title />
+        <InputForm />
+      </div>
       <TodoList />
       <Notifications />
     </div>
